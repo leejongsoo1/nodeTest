@@ -19,6 +19,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// 가상경로
+app.use('/css', express.static('public/stylesheets'));
+app.use('/js', express.static('public/javascripts'));
+app.use('/uploadImg', express.static('public/uploads'));
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
