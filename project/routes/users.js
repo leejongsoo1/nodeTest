@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+// 회원가입 페이지
+router.get('/register', (req, res, next) => {
+  res.render('userRegister');
 });
 
 module.exports = router;
