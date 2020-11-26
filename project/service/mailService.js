@@ -17,7 +17,7 @@ module.exports = (email, purpose) => {
     var subject = '';
     var text = '';
 
-    var dice = getRandomInt();
+    var dice = getRandomInt(0, 999999);
 
     if(purpose == 'password') {
         subject = 'Node 회원 인증 이메일 입니다.';
@@ -33,7 +33,10 @@ module.exports = (email, purpose) => {
 
     transport.sendMail(mailOptions, (err, info) => {
         if(err) console.log(err);
-        else console.log('send success!! ' + info.response);
+        else {
+            console.log('send success!! ' + info.response);
+            return dice;
+        }
     });
     
 };
