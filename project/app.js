@@ -4,9 +4,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-// 추가
+// 선언 추가
 var mongodb = require('./database/mongo');
-
+var passport = require('passport');
+var passportConfig = require('./service/passport');
+var session = require('express-session');
+var flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -24,13 +27,36 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
-// 추가
+// 실행 추가
+app.use(
+  session({
+    secret: 'fhjs*iu3)*#hn*(h35holaY(&*3ri3289yd#Uhgrrf78',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 24000 * 60 * 60
+    }
+  }
+));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+passportConfig();
 mongodb();
+
+
+// 로그인 정보 - 페이지 전환 시 마다 passport로 인증한 값을 locals에 저장하여 같이 데이터 전송
+app.use((req, res, next) => {
+  if(req.user) res.locals.loginUser = req.user;
+  else res.locals.loginUser = undefined;
+  next();
+});
+
 
 // 가상경로
 app.use('/css', express.static('public/stylesheets'));
 app.use('/js', express.static('public/javascripts'));
+app.use('/img', express.static('public/images'));
 app.use('/uploadImg', express.static('public/uploads'));
 
 

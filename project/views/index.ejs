@@ -37,7 +37,22 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#team">Team</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">Login</a></li>
+                    
+                    <!-- 로그인 전, 후 -->
+                    <% if(loginUser) { %>                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">Settings</a>
+                                <a class="dropdown-item" href="#">Activity Log</a>
+                                <a class="dropdown-item" href="/users/mypage">마이페이지</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </div>
+                        </li>
+                    <% } else { %>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">Login</a></li>
+                    <% } %>
                 </ul>
             </div>
         </div>

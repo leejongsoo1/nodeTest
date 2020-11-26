@@ -1,5 +1,6 @@
 var express = require('express');
 var uService = require('../service/userService');
+var isAuthenticated = require('../service/isAuth');
 
 var router = express.Router();
 
@@ -11,20 +12,22 @@ router.get('/register', (req, res, next) => {
 // 회원가입 POST
 router.post('/register', (req, res, next) => {
   let body = req.body;
-  let email = body.email;
-  let password = body.password;
-  let name = body.name;
-  let nickName = body.nickName;
-
   let data = {
-    email: email,
-    password: password,
-    name: name,
-    nickName: nickName
+    email: body.email,
+    password: body.password,
+    name: body.name,
+    nickName: body.nickName,
+    reg_date: new Date(),
+    authority: 'ROLE_USER'
   }
 
   uService.registerUser(data, res);
   
+});
+
+// 마이페이지
+router.get('/mypage', isAuthenticated, (req, res, next) => {
+  res.render('mypage');
 });
 
 

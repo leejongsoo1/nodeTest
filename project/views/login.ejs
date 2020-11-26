@@ -31,17 +31,18 @@
                                     <form action="/login" method="POST">
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                            <input class="form-control py-4" id="email" name="email" type="email" placeholder="Enter email address" >
+                                            <input class="form-control py-4" id="email" name="email" type="email" placeholder="Enter email address" value=<%=userEmail %>>
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1" for="inputPassword">Password</label>
                                             <input class="form-control py-4" id="password" name="password" type="password" placeholder="Enter password" />
                                         </div>
-
- 
+                                        <% if(message) { %>
+                                            <h6 style="color: red; text-align: center;"><%=message %></h6>
+                                        <% } %>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox">
-                                                <input class="custom-control-input" id="rememberEmail" name="rememberEmail" type="checkbox" />
+                                                <input class="custom-control-input" id="rememberEmail" name="rememberEmail" type="checkbox" <% if(userEmail) { %> checked <% } %>/>
                                                 <label class="custom-control-label" for="rememberEmail">Remember password</label>
                                             </div>
                                         </div>                                            
