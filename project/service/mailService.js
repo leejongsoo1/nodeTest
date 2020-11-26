@@ -1,11 +1,7 @@
 var mailer = require('nodemailer');
 
-module.exports = (email, res) => {
+module.exports = async (email, res, dice) => {
     
-    var getRandomInt = (min, max) => {
-        return Math.floor(Math.random() * (max - min)) + min;
-    };
-
     let transport = mailer.createTransport({
         service: 'gmail',
         auth: {
@@ -13,8 +9,6 @@ module.exports = (email, res) => {
             pass: 'bfmvhjriemgjhczv'
         }
     });
-
-    var dice = getRandomInt(0, 999999);
 
     let mailOptions = {
         from: 'jongsoo996@gmail.com',
@@ -26,8 +20,8 @@ module.exports = (email, res) => {
     transport.sendMail(mailOptions, (err, info) => {
         if(err) console.log(err);
         else {
-            console.log('send success!! ' + info.response);
-            res.json({status: "OK"});            
+            console.log('send success!! ' + info.response);            
+            res.json({status: "OK"});
         }
     });
     

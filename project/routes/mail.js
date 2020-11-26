@@ -1,23 +1,30 @@
 var express = require('express');
 var mail = require('../service/mailService');
+var mailer = require('nodemailer');
 var router = express.Router();
 
+// 메일 전송
 router.post('/send', (req, res, next) => {
     let email = req.body.email;
-    mail(email, res);    
+    var dice = getRandomInt(111111, 999999);
+    req.session.emailCode = dice;
+    mail(email, res, dice);
 });
 
+// session code 값 비교
 router.post('/checkCode', (req, res, next) => {
     let code = req.body.code;
-    console.log(req.session.emailCode);
     if(req.session.emailCode == code) {
-        req.session.emailCode = 0;
-        res.json({status: "OK"});
+        delete req.session.emailCode;
+        res.json({status: "OK"});        
     } else {
         res.json({status: "False"});
     }
     res.end();
 });
 
+var getRandomInt = (min, max) => {
+    return Math.floor(Math.random() * (max - min)) + min;
+};
 
 module.exports = router;

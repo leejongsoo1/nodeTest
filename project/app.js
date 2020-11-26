@@ -10,6 +10,7 @@ var passport = require('passport');
 var passportConfig = require('./service/passport');
 var session = require('express-session');
 var flash = require('connect-flash');
+var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -29,6 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // 실행 추가
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(
   session({
     secret: 'fhjs*iu3)*#hn*(h35holaY(&*3ri3289yd#Uhgrrf78',

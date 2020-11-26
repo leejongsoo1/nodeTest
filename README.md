@@ -13,3 +13,4 @@
 ##### npm i express-session (세션 모듈 - flash 보다 먼저 선언)
 ##### npm i connect-flash   (flash 모듈)
 ##### npm i nodemailer      (메일전송 모듈)
+##### npm i body-parser     (body 데이터 모듈)
