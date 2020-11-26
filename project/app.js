@@ -34,6 +34,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
+      // 하루 유지
       maxAge: 24000 * 60 * 60
     }
   }
