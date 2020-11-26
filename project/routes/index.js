@@ -40,4 +40,10 @@ router.get('/logout', (req, res, next) => {
   res.redirect('/');
 });
 
+
+// 패스워드 변경
+router.get('/password', (req, res, next) => {
+  res.render('password');
+});
+
 module.exports = router;

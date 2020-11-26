@@ -16,5 +16,18 @@ services.registerUser = (data, res) => {
     });
 };
 
+services.findUser = (email, res) => {
+    User.findOne({email: email}, (err, userInfo) => {
+        if(err) {
+            console.error('mongo findOne error ', err);
+        } else{            
+            if(userInfo != null) 
+                res.json({status: "OK"});
+            else
+                res.json({status: "False"});
+        }
+    });
+};
+
 
 module.exports = services;

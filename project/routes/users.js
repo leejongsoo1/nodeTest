@@ -25,6 +25,13 @@ router.post('/register', (req, res, next) => {
   
 });
 
+// 이메일 체크
+router.post('/emailCheck', (req, res, next) => {
+  let email = req.body.userEmail;
+  uService.findUser(email, res); 
+});
+
+
 // 마이페이지
 router.get('/mypage', isAuthenticated, (req, res, next) => {
   res.render('mypage');

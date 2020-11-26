@@ -12,3 +12,4 @@
 ##### npm i passport-local  (자체 로그인 모듈)
 ##### npm i express-session (세션 모듈 - flash 보다 먼저 선언)
 ##### npm i connect-flash   (flash 모듈)
+##### npm i nodemailer      (메일전송 모듈)
