@@ -31,6 +31,13 @@ router.post('/emailCheck', (req, res, next) => {
   uService.findUser(email, res); 
 });
 
+// password 변경
+router.post('/changePw', (req, res, next) => {
+  let data = req.body;
+  uService.changePw(data, res);
+  
+});
+
 
 // 마이페이지
 router.get('/mypage', isAuthenticated, (req, res, next) => {
