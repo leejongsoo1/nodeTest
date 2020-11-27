@@ -1,6 +1,5 @@
 var express = require('express');
 var mail = require('../service/mailService');
-var mailer = require('nodemailer');
 var router = express.Router();
 
 // 메일 전송
@@ -20,7 +19,6 @@ router.post('/checkCode', (req, res, next) => {
     } else {
         res.json({status: "False"});
     }
-    res.end();
 });
 
 var getRandomInt = (min, max) => {
