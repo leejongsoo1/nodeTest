@@ -3,6 +3,9 @@
 # MongoDB 현 설정
 ##### DB: nodeTest, Collection: users(회원) - database 폴더 참조
 
+# Mail 설정
+##### Mail 전송을 위해서는 mailService.js의 이메일 패스워드를 등록해야함.
+
 # npm 추가 설치
 ##### npm i
 ##### npm i express
