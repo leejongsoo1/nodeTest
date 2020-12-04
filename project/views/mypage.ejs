@@ -29,10 +29,18 @@
         </div>
     </header>
 
-    <div class="page_footer">
+    <!-- Services-->
+    <div class="container">
+        <div>
+            <img src='/uploadImg/leejongsoo.png' alt="개인 이미지" width="500">
+            <form action="/test/uploadImg" method="post" enctype="multipart/form-data">
+                <input type="file" name="img_file" >
+                <input type="submit" value="업로드" >
+            </form>
+        </div>
+
         <% include ./module/footer %>
     </div>
-   
     
     <!-- Bootstrap core JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

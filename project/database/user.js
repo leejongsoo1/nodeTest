@@ -3,7 +3,7 @@ const userSchema = new mongodb.Schema({
     email: String,
     password: String,
     name: String,
-    nickname: String,
+    nickName: String,
     reg_date: Date,
     authority: String
 });

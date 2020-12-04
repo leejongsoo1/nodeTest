@@ -17,3 +17,5 @@
 ##### npm i connect-flash   (flash 모듈)
 ##### npm i nodemailer      (메일전송 모듈)
 ##### npm i body-parser     (body 데이터 모듈)
+##### npm i formidable
+##### npm i path

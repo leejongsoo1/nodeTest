@@ -15,6 +15,7 @@ var bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var mailRouter = require('./routes/mail');
+var testRouter = require('./routes/test');
 
 var app = express();
 
@@ -68,6 +69,7 @@ app.use('/uploadImg', express.static('public/uploads'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/mail', mailRouter);
+app.use('/test', testRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
